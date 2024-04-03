@@ -59,24 +59,6 @@ const scores: Score[] = [
             "超上級者向けです。容赦ない10度のオクターブとアルペジオ、跳躍がふんだんに使用されています。一応人間向け。",
     },
     {
-        title: "Fell",
-        composer: "Persune",
-        genres: [genres["game"], genres["soundtrack"]],
-        url: "https://musescore.com/user/31876905/scores/10053400",
-        embedUrl: "https://musescore.com/user/31876905/scores/10053400/embed",
-        isGood: false,
-        arrangeComment: "NESの重低音のアレンジ失敗しました。ハープシコードとかが映えるかも。",
-    },
-    {
-        title: "Inner Universe",
-        composer: "Origa",
-        genres: [genres["game"], genres["anime"]],
-        url: "https://musescore.com/user/31876905/scores/10083898",
-        embedUrl: "https://musescore.com/user/31876905/scores/10083898/embed",
-        isGood: false,
-        arrangeComment: "攻殻機動隊のアレです。最初はよかったと思う。真ん中のアレンジが難しい。",
-    },
-    {
         title: "Summer Pockets BGM 1",
         composer: "水月陵",
         genres: [genres["game"], genres["anime"], genres["soundtrack"]],
@@ -88,6 +70,15 @@ const scores: Score[] = [
     },
     {
         title: "芥川龍之介の河童 ～ Candid Friend",
+        composer: "ZUN",
+        genres: [genres["touhou"], genres["game"], genres["soundtrack"]],
+        url: "https://musescore.com/user/31876905/scores/14945209",
+        embedUrl: "https://musescore.com/user/31876905/scores/14945209/embed",
+        isGood: false,
+        arrangeComment: "東方のアレンジです。めちゃめちゃがんばりました。",
+    },
+    {
+        title: "赤よりも赤い夢",
         composer: "ZUN",
         genres: [genres["touhou"], genres["game"], genres["soundtrack"]],
         url: "https://musescore.com/user/31876905/scores/8602988",
@@ -122,6 +113,15 @@ const scores: Score[] = [
         isGood: true,
         arrangeComment:
             "アニメ「&gt;harmony/&lt;」の主題歌です。悲壮感あふれる歌詞とイントロのペダルのノイズが推しポイントです。",
+    },
+    {
+        title: "瓦礫の塔",
+        composer: "kemu",
+        genres: [genres["vocaloid"]],
+        url: "https://musescore.com/user/31876905/scores/12928771",
+        embedUrl: "https://musescore.com/user/31876905/scores/12928771/embed",
+        isGood: true,
+        arrangeComment: "まあ上級者向けです。装飾音やアルペジオ、跳躍がふんだんに使用されています。人間向け。",
     },
 ]
 
@@ -225,7 +225,7 @@ const openGenre = (genre: Genre) => {
         }
     }
 
-    for (const element of container.querySelectorAll("a.genre_link")!) {
+    for (const element of container.querySelectorAll("a.genre_link")) {
         element.addEventListener("click", (e) => {
             const target = e.target as HTMLAnchorElement
 

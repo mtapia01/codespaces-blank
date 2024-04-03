@@ -48,7 +48,7 @@ const decrypt = (encrypted: string, password: string, dist: string) => {
 
 const frameLoad = () =>
     setTimeout(() => {
-        const b: NodeListOf<HTMLAnchorElement> = mainframe.contentDocument!.querySelectorAll("a")!
+        const b: NodeListOf<HTMLAnchorElement> = mainframe.contentDocument!.querySelectorAll("a")
 
         for (const element of b) {
             element.setAttribute("target", "_top")

@@ -21,7 +21,7 @@ module.exports = defineConfig({
     parserOptions: {
         project: ["./tsconfig.json"],
     },
-    plugins: ["sort-class-members", "unused-imports"],
+    plugins: ["sort-class-members", "unused-imports", "@typescript-eslint"],
     rules: {
         "@typescript-eslint/array-type": [
             "error",
@@ -177,7 +177,6 @@ module.exports = defineConfig({
         "@typescript-eslint/prefer-ts-expect-error": "error",
         "@typescript-eslint/promise-function-async": "error",
         "@typescript-eslint/return-await": "error",
-        "@typescript-eslint/sort-type-union-intersection-members": "error",
         "constructor-super": "error",
         "default-case-last": "error",
         eqeqeq: "error",
