@@ -1,8 +1,8 @@
 import Swal from "sweetalert2"
 
-const onDummyEnterClick = (e: Event) => {
+const onDummyEnterClick = async (e: Event) => {
     e.preventDefault()
-    Swal.fire({
+    await Swal.fire({
         title: "注意事項を読んでください！",
         text: "注意事項をしっかり読んでいないと、このサイトを利用できません！",
         icon: "error",

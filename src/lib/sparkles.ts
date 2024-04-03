@@ -20,7 +20,6 @@ let x = 400
 let ox = 400
 let y = 300
 let oy = 300
-let _swide = 800
 let shigh = 600
 let sleft = 0
 let sdown = 0
@@ -35,7 +34,6 @@ const tinyy = new Array<number>()
 const tinyv = new Array<number>()
 
 const setWidth = () => {
-    _swide = d.documentElement.clientWidth
     shigh = d.documentElement.clientHeight
 }
 
