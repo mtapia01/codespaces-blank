@@ -11,3 +11,13 @@ button {
     color: black;
     height: 22px;
 }
+
+div#resolve-status-indicator > span {
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+div#resolve-status-indicator.congratulations {
+    font-weight: bold;
+    font-size: 22px;
+}

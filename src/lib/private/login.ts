@@ -1,10 +1,10 @@
-const password: { [key: string]: string } = {
-    えきむっごきへで: "最強の私の名前。",
+const passwords: { [key: string]: string } = {
+    えきむっごきへで: "最強な私の名前。",
     げどぴんやせぎく: "広告を消したとき、どのページに移動する？",
     がびてちぶけぢん: "ようこそページの対話。",
     うぅぢはれぉぜぉ: "HTML を見ても何もありませんよ。",
     やわごぇるでぉほ: "右クリックは禁止です！",
-    ゐかいぅゎっげし: "楽譜置き場訪問してください！",
+    ゐかいぅゎっげし: "楽譜置き場にパスワードがある気がします！",
 }
 
 const generateRange = (startChar: string, endChar: string) => {
@@ -74,10 +74,8 @@ export const bakePassword = (rawPassword: string) => {
     return hashChar
 }
 
-window.bakePassword = bakePassword
-
 export const submitPassword = (inputPassword: string) => {
-    if (inputPassword === "") {
+    if (inputPassword.length === 0) {
         alert("パスワードを入力してください！")
 
         return
@@ -85,24 +83,91 @@ export const submitPassword = (inputPassword: string) => {
 
     const bakedPassword = bakePassword(inputPassword)
 
-    if (!(bakedPassword in password)) {
+    if (!(bakedPassword in passwords)) {
         alert("パスワードが間違っています！")
 
         return
     }
 
+    markPasswordAsResolved(bakedPassword)
     window.open(`frame.html?dist=${bakedPassword}&password=${inputPassword}`, "_self")
 }
 
-window.submitPassword = submitPassword
+const RESOLVED_PASSWORDS_LS = "passed_passwords"
+
+const getResolvedPasswords = (): string[] => {
+    const resolvedPasswords = localStorage.getItem(RESOLVED_PASSWORDS_LS)
+
+    if (resolvedPasswords === null) return []
+
+    return JSON.parse(resolvedPasswords) as string[]
+}
+
+const markPasswordAsResolved = (password: string) => {
+    const passedPasswords = getResolvedPasswords()
+
+    passedPasswords.push(password)
+    localStorage.setItem(RESOLVED_PASSWORDS_LS, JSON.stringify(passedPasswords))
+}
+
+const getUnresolvedPasswordEntries = (): { [key: string]: string } => {
+    const passedPasswords = new Set(getResolvedPasswords())
+    const unresolvedEntries: { [key: string]: string } = {}
+
+    for (const [key, value] of Object.entries(passwords)) {
+        if (!passedPasswords.has(key)) {
+            unresolvedEntries[key] = value
+        }
+    }
+
+    return unresolvedEntries
+}
 
 export const getRandomHint = () => {
-    const keys = Object.keys(password)
+    let entries = getUnresolvedPasswordEntries()
+
+    if (Object.keys(entries).length === 0) {
+        entries = passwords
+    }
+
+    const keys = Object.keys(entries)
     const index = Math.floor(Math.random() * keys.length)
     const randomKey = keys[index]
-    const hint = password[randomKey]
+    const hint = entries[randomKey]
 
     return `${index + 1}ページ目のヒント：${hint}`
 }
 
+const createResolveStatusIndicator = () => {
+    const elm = document.querySelector("#resolve-status-indicator")!
+    const resolvedPasswords = getResolvedPasswords()
+    const allPasswords = Object.keys(passwords)
+    const resolveStatus: boolean[] = []
+
+    for (const password of allPasswords) {
+        resolveStatus.push(resolvedPasswords.includes(password))
+    }
+
+    // すべて解決済みなら, おめでとうメッセージを表示
+    if (resolveStatus.every(Boolean)) {
+        elm.classList.add("congratulations")
+        elm.textContent = "全隠しページを制覇しました！おめでとうございます！"
+
+        return
+    }
+
+    // そうでなかったら, インジケータを表示
+    for (const element of resolveStatus) {
+        const span = document.createElement("span")
+
+        span.textContent = element ? "●" : "○"
+        elm.append(span)
+    }
+}
+
 window.getRandomHint = getRandomHint
+window.submitPassword = submitPassword
+window.bakePassword = bakePassword
+window.addEventListener("load", () => {
+    createResolveStatusIndicator()
+})
