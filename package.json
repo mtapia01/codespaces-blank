@@ -13,8 +13,8 @@
         "format": "prettier --write --cache .",
         "lint": "eslint --cache .",
         "lint:sarif": "eslint --cache . -f node_modules/@microsoft/eslint-formatter-sarif/sarif.js -o results.sarif || true",
-        "build": "vite build",
-        "dev": "vite",
+        "build": "tsx src/sc-problem-generator.ts && vite build",
+        "dev": "pnpm build && pnpm preview",
         "preview": "vite preview"
     },
     "repository": {
@@ -29,6 +29,7 @@
     "homepage": "https://github.com/PeyaPeyaPeyang/HomePage#readme",
     "dependencies": {
         "@justinribeiro/lite-youtube": "^1.5.0",
+        "@fontsource/jetbrains-mono": "^5.0.20",
         "crypto-js": "^4.2.0",
         "sweetalert2": "^11.10.7"
     },
@@ -56,11 +57,16 @@
         "rollup": "^4.14.0",
         "simple-git-hooks": "^2.11.1",
         "typescript": "^5.4.3",
+        "tsx": "^4.16.5",
         "vite": "3.2.7",
         "vite-plugin-checker": "0.6.2",
         "vite-plugin-handlebars": "1.6.0",
         "vite-plugin-minify": "1.5.2",
-        "vite-tsconfig-paths": "3.6.0"
+        "vite-tsconfig-paths": "3.6.0",
+        "marked": "^14.0.0",
+        "marked-highlight": "^2.1.4",
+        "highlight.js": "^11.10.0",
+        "gray-matter": "^4.0.3"
     },
     "lint-staged": {
         "*": [

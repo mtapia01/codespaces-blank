@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ja">
+    <head>
+        <meta content="text/html;charset=UTF-8" http-equiv="Content-Type" />
+        <title>ぺやんぐのセキュリティ事例問題集</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+        <link href="/fonts/ayu-gothic.woff2" rel="preload" as="font" type="font/woff2" />
+        <link href="@/styles/sc-problems/sc-index.css" rel="stylesheet" />
+        <link href="@/styles/global.css" rel="stylesheet" />
+
+        <script type="module" src="@/lib/global.ts"></script>
+        <script type="module" src="@/lib/sparkles.ts"></script>
+        <script type="module" src="@/lib/sc-problems/index.ts"></script>
+    </head>
+    <body>
+        <div id="wrapper">
+            <header class="container">{{> header}}</header>
+            <div class="container">
+                <hr />
+                <h2 class="title">ぺやんぐのセキュリティ事例問題集</h2>
+                <p>ぺやんぐが作問した, セキュリティに関する記述が主の問題集です。</p>
+                <p>
+                    <span>各問題は主に１０～７０文字の記述形式で, 一部は選択問題です。</span>
+                    <span>最初に長文のシナリオが与えられ, その後に問題が続きます。</span>
+                </p>
+                <p>
+                    <a href="https://www.ipa.go.jp">IPA</a>
+                    （※１） の
+                    <a href="https://www.ipa.go.jp/shiken/kubun/sc.html">情報処理安全確保支援士試験</a>
+                    （※２）の勉強に役に立つかもしれません。
+                </p>
+                <p>特に採点機能等は用意していないため, 皆様の裁量で自己採点してください。</p>
+                <br />
+
+                <h3>免責事項</h3>
+                <ul>
+                    <li>
+                        この問題集は, ぺやんぐが暇つぶしに作成したものであるので, 多少の作問ミスがあるかもしれません。
+                    </li>
+                    <li>この問題集を使用したことによる不利益やほか一切の責任を負いません。</li>
+                    <li>
+                        各問題で取り上げられている事例はすべて架空のものであり, 実在の組織や個人とは一切関係ありません。
+                    </li>
+                    <li>
+                        ※１：IPA（情報処理推進機構）は, 独立行政法人情報処理推進機構の略称です。
+                        <br />
+                        　　　また, この問題集は IPA やその他の機関とは一切関係がなく,
+                        ぺやんぐが個人で勝手に作成したものです。
+                        <br />
+                    </li>
+
+                    <li>
+                        ※２：情報処理安全確保支援士試験は, IPA が実施している国家資格試験です。
+                        <br />
+                        　　　これに合格すると, 情報処理安全確保支援士に登録する資格を得られます。
+                    </li>
+                </ul>
+
+                <h3>問題一覧</h3>
+
+                <p>各問題をクリックすると問題のページに遷移します。</p>
+                <p>問題画面はホワイトモードなので, 目を焼かれることなかれ。</p>
+
+                <div id="problems"></div>
+
+                <p><a href="/">（トップページに戻る↵）</a></p>
+            </div>
+        </div>
+    </body>
+</html>

@@ -23,6 +23,7 @@ const allFiles = [
     ...readdirSync(resolvePath(__dirname, "src/pages")),
     ...readdirNested("src/pages", "contents"),
     ...readdirNested("src/pages", "private"),
+    ...readdirNested("src/pages", "sc-problems"),
 ]
 
 const htmlFiles = allFiles.filter(
