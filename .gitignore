@@ -26,6 +26,9 @@ fabric.properties
 /src/pages/private/pages/*.raw.html
 /src/pages/private/pages/.gitignore
 /src/pages/private/pages/.git/**
+/src/pages/sc-problems/**
+!/src/pages/sc-problems/index.html
+/src/public/api/sc-problems.json
 
 /node_modules
 /dist
